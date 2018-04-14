@@ -8,5 +8,6 @@ urlpatterns = [
 	path('post/<int:pk>/',views.PostDetailView.as_view(),name = 'detail'),
 	path('archives/<int:year>/<int:month>/',views.ArchivesView.as_view(),name = 'archives'),
 	path('category/<int:pk>',views.CategoryView.as_view(),name = 'category'),
+	path('recharge',views.recharge,name = 'recharge'),
 #	path('search/',views.search,name = 'search'),
 ]

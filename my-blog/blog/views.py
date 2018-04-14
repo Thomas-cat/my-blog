@@ -5,6 +5,20 @@ from .models import Post,Category
 from comments.forms import CommentForm
 from django.views.generic import ListView,DetailView
 from django.core.paginator import Paginator
+from .proxy.ccckk8 import recharge_ccckk8
+def recharge(requests):
+	q = requests.GET.get('q')
+	msg = '输入充值链接'
+	if q!= None:
+		if q.find('bid')!= -1:
+			ret = recharge_ccckk8(q)
+			if ret!=0:
+				msg = '充值故障,请用你的想象力撸管吧'
+			else:
+				msg = '充值成功,切记强撸灰飞烟灭'
+		else:
+			msg = '链接有错误,请重新输入正确的链接'
+	return render(requests,'blog/recharge.html',context = {'msg':msg})
 
 def search(request):
 	q = request.GET.get('q')
