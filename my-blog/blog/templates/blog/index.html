@@ -1,5 +1,8 @@
 {% extends 'base.html' %}
 	    {% block main %}
+	    {% if error_msg%}
+	    <p style="color:blue;font-size:42px">{{ error_msg}}</p>
+	    {%endif %}
 	    {%	for post in post_list %}
                 <article class="post post-{{ post.pk }}">
 
@@ -12,8 +15,8 @@
                                 <span class="post-date"><a href="#"><time class="entry-date"
                                                                           datetime="{{ post.created_time }}">{{ post.created_time }}</time></a></span>
                                 <span class="post-author"><a href="#">{{ post.author }}</a></span>
-                                <span class="comments-link"><a href="#">4 评论</a></span>
-                                <span class="views-count"><a href="#">588 阅读</a></span>
+                                <span class="comments-link"><a href="#">{{ post.comment_set.count }} 评论</a></span>
+                                <span class="views-count"><a href="#">{{ post.views}} 阅读</a></span>
                             </div>
                         </header>
                         <div class="entry-content clearfix">
@@ -23,27 +26,13 @@
                             </div>
                         </div
                 </article>
-	{% empty %}
-	<div class = "no-post">暂时还没有哦~！</div>
 	{% endfor %}
-                <!-- 简单分页效果
-                <div class="pagination-simple">
-                    <a href="#">上一页</a>
-                    <span class="current">第 6 页 / 共 11 页</span>
-                    <a href="#">下一页</a>
-                </div>
-                -->
-                <div class="pagination">
-                    <ul>
-                        <li><a href="">1</a></li>
-                        <li><a href="">...</a></li>
-                        <li><a href="">4</a></li>
-                        <li><a href="">5</a></li>
-                        <li class="current"><a href="">6</a></li>
-                        <li><a href="">7</a></li>
-                        <li><a href="">8</a></li>
-                        <li><a href="">...</a></li>
-                        <li><a href="">11</a></li>
-                    </ul>
-                </div>
+{% if is_paginated %}
+<div class="pagination">
+    {% for i in page_index %}
+    <a  href="?page={%ifequal i '...' %}{{page_obj.number}}{%else%}{{ i }}{%endifequal%}" {% ifequal i page_obj.number %} style="color:red;font-size:30px"{%else%}style = 'font-size:25px'{% endifequal %}>{{ i }}
+    </a>
+    {%  endfor %}
+</div>
+{% endif %}
 	    {% endblock main %}

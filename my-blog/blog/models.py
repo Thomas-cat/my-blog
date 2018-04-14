@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+from django.utils.html import strip_tags
 #创建应用的模型 
 from django.urls import reverse
 
@@ -23,8 +24,8 @@ class Post(models.Model):
 	#因为字数多 所以使用 TextField类
 	body = models.TextField()
 
-	created_time = models.DateTimeField()
-	modified_time = models.DateTimeField()
+	created_time = models.DateTimeField(auto_now_add =True)
+	modified_time = models.DateTimeField(auto_now_add = True)
 	#文章的摘要 
 	excerpt = models.CharField(max_length = 100,blank = True)
 	
@@ -33,13 +34,24 @@ class Post(models.Model):
 	tags = models.ManyToManyField('Tag',blank = True)
 	#user类是django提供的 完成了登录注册等模型的功能
 	author = models.ForeignKey(User,on_delete = models.CASCADE)
-	
+
+	#阅读数目	
+	views = models.PositiveIntegerField(default = 0)
+
+
+	def increase_views(self):
+		self.views+=1
+		self.save(update_fields = ['views'])
 	def get_absolute_url(self):
 		return reverse('blog:detail',kwargs={'pk':self.pk})
 
 	
 	def __str__(self):
 		return self.title
+	def save(self,*args,**kwargs):
+		if not self.excerpt:
+			self.excerpt = strip_tags(self.body)[:40]
+		super(Post,self).save(*args,**kwargs)
 
 	class Meta:
 		ordering = ['-created_time']
