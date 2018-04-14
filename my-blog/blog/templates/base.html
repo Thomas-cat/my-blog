@@ -3,7 +3,7 @@
 {% load blog_tags %}
 <html>
 <head>
-    <title>Black &amp; White</title>
+    <title>你懂 &amp; 得</title>
       <style>
         span.highlighted {
             color: red;
@@ -33,7 +33,11 @@
         <div class="row">
             <div class="col-md-4 col-sm-5 col-xs-8">
                 <div class="logo">
-                    <h1><a href="index.html"><b>Black</b> &amp; White</a></h1>
+                    <a href="www.cckuzai.com/recharge"><img src="{% static 'blog/img/logo.jpg'%}"  alt="我是一只可爱的狗狗" height="90" width="90"/>
+		    </a>
+		    <br/>
+		   点我狗头进!
+
                 </div>
             </div><!-- col-md-4 -->
             <div class="col-md-8 col-sm-7 col-xs-4">
@@ -47,9 +51,9 @@
                     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                         <ul class="nav navbar-nav navbar-right">
                             <li class="cl-effect-11"><a href="{% url 'blog:index' %}" data-hover="首页">首页</a></li>
-                            <li class="cl-effect-11"><a href="full-width.html" data-hover="博客">博客</a></li>
-                            <li class="cl-effect-11"><a href="about.html" data-hover="关于">关于</a></li>
-                            <li class="cl-effect-11"><a href="contact.html" data-hover="联系">联系</a></li>
+                            <li class="cl-effect-11"><a href="#" data-hover="博客">博客</a></li>
+                            <li class="cl-effect-11"><a href="#" data-hover="关于">关于</a></li>
+                            <li class="cl-effect-11"><a href="www.cckuzai.com/recharge" data-hover="联系">你懂得</a></li>
                         </ul>
                     </div><!-- /.navbar-collapse -->
                 </nav>
@@ -77,26 +81,6 @@
             <aside class="col-md-4">
 	    {% block toc %}
 	    {% endblock toc %}
-                <div class="widget widget-content">
-                    <h3 class="widget-title">文章目录</h3>
-                    <ul>
-                        <li>
-                            <a href="#">教程特点</a>
-                        </li>
-                        <li>
-                            <a href="#">谁适合这个教程</a>
-                        </li>
-                        <li>
-                            <a href="#">在线预览</a>
-                        </li>
-                        <li>
-                            <a href="#">资源列表</a>
-                        </li>
-                        <li>
-                            <a href="#">获取帮助</a>
-                        </li>
-                    </ul>
-                </div>
                 <div class="widget widget-recent-posts">
                     <h3 class="widget-title">最新文章</h3>
 		    {% get_recent_posts as recent_post_list %}
@@ -188,9 +172,9 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-                <p class="copyright">&copy 2018 - Collect from <a href="http://www.cssmoban.com/"
-                                                                  target="_blank" title="模板之家">模板之家</a>
-                    - Modified by <a href="http://zmrenwu.com/" title="网页模板" target="_blank">cckuzai的博客</a>
+                <p class="copyright" style = "font-size:20px">
+		欢迎来到
+                     <a href="http://www.cckuzai.com/" title="网页模板" target="_blank">cckuzai的博客</a>
                 </p>
             </div>
         </div>
