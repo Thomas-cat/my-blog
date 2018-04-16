@@ -1,11 +1,21 @@
 from django.shortcuts import render,get_object_or_404
 from django.http import HttpResponse
 from django.db.models import Q
-from .models import Post,Category
+from .models import Post,Category,Tag
 from comments.forms import CommentForm
 from django.views.generic import ListView,DetailView
 from django.core.paginator import Paginator
 from .proxy.ccckk8 import recharge_ccckk8
+
+class TagView(ListView):
+	model = 'Post'
+	template_name = 'blog/index.html'
+	context_object_name = 'post_list'
+	def get_queryset(self):
+		tg = get_object_or_404(Tag,pk = self.kwargs.get('pk'))
+		return Post.objects.all().filter(tags = tg)
+
+	
 def recharge(requests):
 	q = requests.GET.get('q')
 	msg = '输入充值链接'
