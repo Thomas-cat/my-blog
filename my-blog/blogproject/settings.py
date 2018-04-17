@@ -40,6 +40,8 @@ INSTALLED_APPS = [
     'blog',
     'comments',
     'haystack',
+    'ckeditor',
+    'ckeditor_uploader'
 ]
 
 MIDDLEWARE = [
@@ -122,6 +124,12 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+
+CKEDITOR_UPLOAD_PATH = 'article_images'
+MEDIA_URL ='/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR,'media/')
+
+
 DEBUG = True
 ALLOWED_HOSTS = ['127.0.0.1', 'localhost ', '.cckuzai.com']
 HAYSTACK_CONNECTIONS = {
@@ -132,3 +140,21 @@ HAYSTACK_CONNECTIONS = {
 }
 HAYSTACK_SEARCH_RESULTS_PER_PAGE = 10
 HAYSTACK_SIGNAL_PROCESSOR = 'haystack.signals.RealtimeSignalProcessor'
+
+
+
+
+
+CKEDITOR_CONFIGS = {
+     'default': {
+         'toolbar': (
+                         ['div','Source','-','Save'],
+                         ['Form','ImageButton','HiddenField'],
+                         ['Link','Unlink','Anchor'],
+                         ['Flash','Table','HorizontalRule'],
+                         ['Styles','Format','Font','FontSize'],
+                         ['TextColor','BGColor'],
+                 ),
+        }
+}
+

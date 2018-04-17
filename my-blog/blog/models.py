@@ -3,6 +3,7 @@ from django.contrib.auth.models import User
 from django.utils.html import strip_tags
 #创建应用的模型 
 from django.urls import reverse
+from ckeditor_uploader.fields import RichTextUploadingField
 
 #创建目录类 name是里面的字段
 class Category(models.Model):
@@ -22,7 +23,7 @@ class Tag(models.Model):
 class Post(models.Model):
 	title = models.CharField(max_length = 70)
 	#因为字数多 所以使用 TextField类
-	body = models.TextField()
+	body = RichTextUploadingField()
 
 	created_time = models.DateTimeField(auto_now_add =True)
 	modified_time = models.DateTimeField(auto_now_add = True)
