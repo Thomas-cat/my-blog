@@ -103,13 +103,14 @@ img {
  * 3.0 - Site Header
  */
 
-#site-header {
-    background-color: #FFF;
+/*
+#aaaaaite-header {
+    background-color: #9abfde;
     padding: 25px 20px;
     margin-bottom: 40px;
     border-bottom: 1px solid #e7e7e7;
 }
-
+*/
 .copyrights {
     text-indent: -9999px;
     height: 0;
@@ -214,13 +215,11 @@ img {
 }
 
 .post {
-    background: #fff;
-    padding: 30px 30px 0;
 }
 
 .entry-title {
     text-align: center;
-    font-size: 1.9em;
+    font-size: 25px;
     margin-bottom: 20px;
     line-height: 1.6;
     padding: 10px 20px 0;
@@ -238,13 +237,13 @@ img {
     line-height: 1.9;
     font-weight: 300;
     color: #000;
+	margin-top:25px;
 }
 
 .post-category::after,
 .post-date::after,
 .post-author::after,
 .comments-link::after {
-    content: ' ·';
     color: #000;
 }
 
@@ -336,8 +335,7 @@ img {
  */
 
 .widget {
-    background: #fff;
-    padding: 30px 0 0;
+    padding: 5px 0 0;
 }
 
 .widget-title {
@@ -374,7 +372,7 @@ img {
 .widget-archives ul {
     padding: 0;
     margin: 0;
-    padding-left: 25px;
+    padding-left: 40px;
 }
 
 .widget-archives ul li {
@@ -397,7 +395,7 @@ img {
 .widget-category ul {
     padding: 0;
     margin: 0;
-    padding-left: 25px;
+    padding-left: 40px;
 }
 
 .widget-category ul li {
@@ -685,8 +683,7 @@ img {
     border: 1px solid #aaa;
     margin-bottom: 15px;
     width: 100%;
-    padding: 15px 15px;
-    font-size: 16px;
+    padding: 5px 5px;
     line-height: 100%;
     transition: 0.4s border-color linear;
 }
@@ -695,10 +692,8 @@ img {
     border: 1px solid #aaa;
     margin-bottom: 15px;
     width: 100%;
-    padding: 15px 15px;
     font-size: 16px;
-    line-height: 20px !important;
-    min-height: 183px;
+    line-height: 10px !important;
     transition: 0.4s border-color linear;
 }
 
@@ -838,9 +833,6 @@ img {
 /**
  * 12.0 - Comment
  */
-.comment-area {
-    padding: 0 30px 0;
-}
 
 .comment-form {
     margin-top: 15px;
@@ -903,3 +895,5 @@ img {
 .current a {
     color: red;
 }
+
+

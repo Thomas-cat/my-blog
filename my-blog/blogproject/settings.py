@@ -12,6 +12,11 @@ https://docs.djangoproject.com/en/2.0/ref/settings/
 
 import os
 
+import logging
+logging.basicConfig(
+level = logging.DEBUG,
+format ='%(asctime)s %(levelname)s %(message)s',
+)
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -25,9 +30,7 @@ SECRET_KEY = 'fij=y9#qxa&2i63!%s3dg*qgn6@x_u#=)!84+=o)(%vf#c9tit'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
-
-
+ALLOWED_HOSTS = ['*']
 # Application definition
 
 INSTALLED_APPS = [
@@ -54,6 +57,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
+HAYSTACK_SEARCH_RESULTS_PER_PAGE = 2
 ROOT_URLCONF = 'blogproject.urls'
 
 TEMPLATES = [
@@ -130,8 +134,6 @@ MEDIA_URL ='/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR,'media/')
 
 
-DEBUG = True
-ALLOWED_HOSTS = ['127.0.0.1', 'localhost ', '.cckuzai.com']
 HAYSTACK_CONNECTIONS = {
     'default': {
         'ENGINE': 'blog.whoosh_cn_backend.WhooshEngine',
@@ -156,5 +158,24 @@ CKEDITOR_CONFIGS = {
                          ['TextColor','BGColor'],
                  ),
         }
+}
+
+CKEDITOR_CONFIGS = {
+    'default': {
+        'toolbar': (
+			['div','Source','-','Save','NewPage','Preview','-','Templates'],
+			['Cut','Copy','Paste','PasteText','PasteFromWord','-','Print','SpellChecker','Scayt'],
+			['Undo','Redo','-','Find','Replace','-','SelectAll','RemoveFormat'],
+			['Form','Checkbox','Radio','TextField','Textarea','Select','Button', 'ImageButton','HiddenField'],
+			['Bold','Italic','Underline','Strike','-','Subscript','Superscript'],
+			['NumberedList','BulletedList','-','Outdent','Indent','Blockquote'],
+			['JustifyLeft','JustifyCenter','JustifyRight','JustifyBlock'],
+			['Link','Unlink','Anchor'],
+			['Image','Flash','Table','HorizontalRule','Smiley','SpecialChar','PageBreak'],
+			['Styles','Format','Font','FontSize'],
+			['TextColor','BGColor'],
+			['Maximize','ShowBlocks','-','About', 'pbckcode'],
+		),
+	}
 }
 

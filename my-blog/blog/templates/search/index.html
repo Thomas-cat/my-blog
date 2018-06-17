@@ -5,7 +5,7 @@
 	    {%endif %}
 		<div style=''>
                          <h2 class="top_h">
-                          {%if category%}{{category.category_name}}{%elif date_time%}{{date_time}}{%else%} 最新文章 {%endif%}
+                          {%if category %}{{category.category_name}}{%else%} 最新文章 {%endif%}
                             </h2>
 <ul class="post-ul">
 	    {%	for post in post_list %}
@@ -16,10 +16,10 @@
                                 <a class="excerpt-a" href="{{ post.get_absolute_url }}">{{ post.title }}</a>
 								</h3>
                         <div class="entry-content clearfix">
-                            <p class='excerpt-p'>{{ post.excerpt|safe }}</p>
+                            <p class='excerpt-p'>{{ post.excerpt }}</p>
                         </div>
-           <span class="post-date" style="padding-right:10px;">{{ post.created_time }}</span>
-                                <span class="views-count">{{ post.views}} 浏览</span>
+           <span class="post-date" style="padding-right:10px;"><a href="#"><time class="entry-date" datetime="{{ post.created_time }}">{{ post.created_time }}</time></a></span>
+                                <span class="views-count"><a href="#"> {{ post.views}} 浏览</a></span>
 				</li>
 	{% endfor %}
 

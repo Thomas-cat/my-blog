@@ -1,4 +1,5 @@
 from django.db import models
+import logging
 from django.contrib.auth.models import User
 from django.utils.html import strip_tags
 #创建应用的模型 
@@ -28,7 +29,7 @@ class Post(models.Model):
 	created_time = models.DateTimeField(auto_now_add =True)
 	modified_time = models.DateTimeField(auto_now_add = True)
 	#文章的摘要 
-	excerpt = models.CharField(max_length = 100,blank = True)
+	excerpt = models.CharField(max_length = 150,blank = True)
 	
 	#文章要与分类关联 用模型类创建
 	category = models.ForeignKey('Category',on_delete = models.CASCADE)
@@ -43,6 +44,7 @@ class Post(models.Model):
 	def increase_views(self):
 		self.views+=1
 		self.save(update_fields = ['views'])
+		logging.debug("hello")
 	def get_absolute_url(self):
 		return reverse('blog:detail',kwargs={'pk':self.pk})
 
@@ -51,7 +53,7 @@ class Post(models.Model):
 		return self.title
 	def save(self,*args,**kwargs):
 		if not self.excerpt:
-			self.excerpt = strip_tags(self.body)[:40]
+			self.excerpt = strip_tags(self.body)[:140]+"..."
 		super(Post,self).save(*args,**kwargs)
 
 	class Meta:

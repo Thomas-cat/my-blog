@@ -3,48 +3,42 @@
 
 {% block main %}
     {% if query %}
-        {% for result in page.object_list %}
-            <article class="post post-{{ result.object.pk }}">
-                <header class="entry-header">
-                    <h1 class="entry-title">
-                        <a href="{{ result.object.get_absolute_url }}">{% highlight result.object.title with query %}</a>
-                    </h1>
-                    <div class="entry-meta">
-                    <span class="post-category">
-                        <a href="{% url 'blog:category' result.object.category.pk %}">
-                            {{ result.object.category.category_name }}</a></span>
-                        <span class="post-date"><a href="#">
-                            <time class="entry-date" datetime="{{ result.object.created_time }}">
-                                {{ result.object.created_time }}</time></a></span>
-                        <span class="post-author"><a href="#">{{ result.object.author }}</a></span>
-                        <span class="comments-link">
-                        <a href="{{ result.object.get_absolute_url }}#comment-area">
-                            {{ result.object.comment_set.count }} 评论</a></span>
-                        <span class="views-count"><a
-                                href="{{ result.object.get_absolute_url }}">{{ result.object.views }} 阅读</a></span>
-                    </div>
-                </header>
+		<div style=''>
+                         <h2 class="top_h">
+                          {%if category %}{{category.category_name}}{%else%} 搜索到的文章 {%endif%}
+                            </h2>
+<ul class="post-ul">
+
+	    {%	for post in page.object_list %}
+<li style='border-bottom: #ccc 1px solid;  margin-bottom: 10px;overflow: hidden; list-style:none;'>
+   <h3 style="    line-height: 30px;
+    height: 30px;">
+                        <a  class="excerpt-a" href="{{ post.object.get_absolute_url }}">{% highlight post.object.title with query %}</a>
+								</h3>
+
                 <div class="entry-content clearfix">
-                    <p>{% highlight result.object.body with query %}</p>
-                    <div class="read-more cl-effect-14">
-                        <a href="{{ result.object.get_absolute_url }}" class="more-link">继续阅读 <span
-                                class="meta-nav">→</span></a>
-                    </div>
+                    <p class="excerpt=p">{% highlight post.object.body with query %}</p>
                 </div>
-            </article>
+           <span class="post-date" style="padding-right:10px;"><a href="#"><time class="entry-date" datetime="{{ post.object.created_time }}">{{ post.object.created_time }}</time></a></span>
+                                <span class="views-count"><a href="#"> {{ post.object.views}} 浏览</a></span>
+				</li>
         {% empty %}
             <div class="no-post">没有搜索到你想要的结果！</div>
         {% endfor %}
-        {% if page.has_previous or page.has_next %}
+
+{% if page.has_previous or page.has_next %}
             <div>
                 {% if page.has_previous %}
-                    <a href="?q={{ query }}&amp;page={{ page.previous_page_number }}">{% endif %}&laquo; Previous
-                {% if page.has_previous %}</a>{% endif %}
-                |
-                {% if page.has_next %}<a href="?q={{ query }}&amp;page={{ page.next_page_number }}">{% endif %}Next
-                &raquo;{% if page.has_next %}</a>{% endif %}
+                    <a href="?q={{ query }}&amp;page={{ page.previous_page_number }}">
+					&laquo; Previous
+                </a>{% endif %}
+                {% if page.has_next %}
+				<a href="?q={{ query }}&amp;page={{ page.next_page_number }}">Next
+                &raquo;
+				</a>{% endif %}
             </div>
-        {% endif %}
+{%endif%}
+
     {% else %}
         请输入搜索关键词，例如 django
     {% endif %}

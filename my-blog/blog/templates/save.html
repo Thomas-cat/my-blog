@@ -3,7 +3,7 @@
 {% load blog_tags %}
 <html>
 <head>
-    <title>啦啦啦</title>
+    <title>你懂 &amp; 得</title>
       <style>
         span.highlighted {
             color: red;
@@ -12,21 +12,14 @@
 
     <!-- meta -->
     <meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-
- <link rel="icon" href="{% static 'blog/img/favicon.ico' %}" type="image/x-icon">
- <link rel="shortcut icon" href="{% static 'blog/img/favicon.ico' %}" type="image/x-icon">
-
-
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="{% static 'blog/css/bootstrap.min.css' %}">
 <script src="{% static 'blog/js/bootstrap.min.js' %}"></script>
-<script src="{% static 'ckeditor/ckeditor/ckeditor.js' %}"></script>
 
     <!-- css -->
     <link rel="stylesheet" href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
     <link rel="stylesheet" href="{% static 'blog/css/pace.css' %}">
     <link rel="stylesheet" href="{% static 'blog/css/custom.css' %}">
-    <link rel="stylesheet" href="{% static 'blog/css/my.css' %}">
 
     <!-- js -->
     <script src="{% static 'blog/js/pace.min.js' %}"></script>
@@ -35,21 +28,33 @@
 </head>
 
 <body id="single">
-<div class="top-bar">
-	<div class="top-bar-left top-bar-inline">
-<ul class="menu">
-	<li class="menu-text">
-		<a href="/">CCKUZAI</a>
-	</li>
-	<li class="">
-<a href="/subscribe">订阅</a>
-	</li>
-	<li class="">
-	<a href="/specialty-coffee">关于</a></li><li class=""><a href="/products">搜索</a></li>
-	</ul>
-	</div>
-	
-	
+<div class="container">
+    <header id="site-header">
+        <div class="row">
+            <div class="col-md-4 col-sm-5 col-xs-8">
+				<div class="logo">
+                    <h1><a href="{% url 'blog:index' %}"><b>Black</b> &amp; White</a></h1>
+                </div>
+            </div><!-- col-md-4 -->
+			
+            <div class="col-md-8 col-sm-7 col-xs-4">
+                <nav class="main-nav" role="navigation">
+                    <div class="navbar-header">
+                        <button type="button" id="trigger-overlay" class="navbar-toggle">
+                            <span class="ion-navicon"></span>
+                        </button>
+                    </div>
+
+                    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                        <ul class="nav navbar-nav navbar-right">
+                            <li class="cl-effect-11"><a href="{% url 'blog:index' %}" data-hover="首页">首页</a></li>
+                            <li class="cl-effect-11"><a href="#" data-hover="博客">博客</a></li>
+                            <li class="cl-effect-11"><a href="#" data-hover="关于">关于</a></li>
+                            <li class="cl-effect-11"><a href="/recharge" data-hover="你懂得">你懂得</a></li>
+                        </ul>
+                    </div><!-- /.navbar-collapse -->
+                </nav>
+
                 <div id="header-search-box">
                     <a id="search-menu" href="#"><span id="search-icon" class="ion-ios-search-strong"></span></a>
                     <div id="search-form" class="search-form">
@@ -59,28 +64,21 @@
                         </form>
                     </div>
                 </div>
-	</div>
-
-
-    <header id="site-header">
-<div class="header--image" style="background-image:url({% static 'blog/img/index.jpg' %});background-color:#000;">
-<div class="row">
-<div class="column small-12"><h1>欢迎访问</h1><h4>CC谢崽的博客</h4></div></div></div>
+            </div><!-- col-md-8 -->
+        </div>
     </header>
+</div>
 
 
-
-<div class="container" id="detail">
-	<div class="content-body">
-   		 <div class="container">
-   		     <div class="row">
+<div class="content-body">
+    <div class="container">
+        <div class="row">
             <main class="col-md-8">
 	    {% block main %}
 	    {% endblock main %}
             </main>
-
             <aside class="col-md-4">
-			<div style='margin-bottom:10px;'>
+			<div style='margin-bottom:20px;'>
 				<h2 class="top_h">轨迹</h2>
                 <div class="widget widget-archives">
 		    {% archives as date_list %}
@@ -95,8 +93,7 @@
 	  </ul>
                 </div>
 				</div>
-
-				<div>
+<div>
 				<h2 class="top_h">分类</h2>
                 <div class="widget widget-category">
 	   {% get_categories as category_list %}
@@ -111,29 +108,37 @@
 		  </ul>
                 </div>
 				</div>
-				<hr style="border-top: 2px solid #ddd;margin-bottom:5px;">
-				<footer><p class="footer--text" style="color:#501cd0">© CCKUZAI 2017-2018</p></footer>
             </aside>
-
-
-
         </div>
     </div>
 </div>
-<!--
 <footer id="site-footer">
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-                <p class="copyright" style = "font-size:20px">欢迎来到cckuzai的博客</p>
+                <p class="copyright" style = "font-size:20px">
+		欢迎来到
+                     <a href="http://www.cckuzai.com/" title="网页模板" target="_blank">cckuzai的博客</a>
+                </p>
             </div>
         </div>
     </div>
 </footer>
--->
+
 <!-- Mobile Menu -->
+<div class="overlay overlay-hugeinc">
+    <button type="button" class="overlay-close"><span class="ion-ios-close-empty"></span></button>
+    <nav>
+        <ul>
+            <li><a href="{% url 'blog:index' %}">首页</a></li>
+            <li><a href="full-width.html">博客</a></li>
+            <li><a href="about.html">关于</a></li>
+            <li><a href="contact.html">联系</a></li>
+        </ul>
+    </nav>
+</div>
 
 <script src="{% static 'blog/js/script.js' %}"></script>
-</div>
+
 </body>
 </html>
