@@ -19,9 +19,8 @@ $(function() {
         <header class="entry-header">
             <h1 class="entry-title">{{ post.title }}</h1>
             <div class="entry-meta">
-                <span class="label label-primary"><a style="color:white" href="#">{{ post.category.category_name }}</a></span>
-                <span class="post-date"><a href="#"><time class="entry-date"
-                                                          datetime="{{ post.created_time }}">{{ post.created_time }}</time></a></span>
+                <!--<span class="label label-primary"><a style="color:white" href="#">{{ post.category.category_name }}</a></span>
+                --><span class="post-date"><ion-icon name="calendar" style="height:0.93em"></ion-icon><span style="padding-left:12px;">{{ post.created_time|date:"Y-m-d" }}</span></span>
             </div>
 
         </header>
@@ -65,18 +64,6 @@ $(function() {
 <form action="{% url 'comments:post_comment' post.pk %}" method="post" class="comment-form">
   {% csrf_token %}
   <div class="row">
-    <div class="col-md-4">
-      <label for="{{ form.name.id_for_label }}">名字：</label>
-      {{ form.name }}
-      {{ form.name.errors }}
-    </div>
-
-    <div class="col-md-4">
-      <label for="{{ form.email.id_for_label }}">邮箱：</label>
-      {{ form.email }}
-      {{ form.email.errors }}
-    </div>
-
     <div class="col-md-12">
       <label for="{{ form.text.id_for_label }}">评论：</label>
       {{ form.text }}

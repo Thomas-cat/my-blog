@@ -48,6 +48,16 @@ b {
 a {
     color: #333;
 }
+.widget-category a{
+
+padding-left:10px;
+
+}
+.widget-archives a{
+
+padding-left:10px;
+
+}
 
 a:hover, a:focus {
     text-decoration: none;
@@ -72,7 +82,7 @@ p {
 
 #single p,
 #page p {
-    margin-bottom: 25px;
+    margin-bottom: 10px;
 }
 
 .page-title {
@@ -218,26 +228,27 @@ img {
 }
 
 .entry-title {
-    text-align: center;
     font-size: 25px;
-    margin-bottom: 20px;
+/*    margin-bottom: 20px;*/
     line-height: 1.6;
-    padding: 10px 20px 0;
 }
 
 .entry-meta {
-    text-align: center;
-    color: #DDDDDD;
     font-size: 13px;
     margin-bottom: 30px;
 }
+.entry-header{
 
+    border-bottom: 2px solid #ddd;
+
+
+}
 .entry-content {
     font-size: 18px;
     line-height: 1.9;
     font-weight: 300;
     color: #000;
-	margin-top:25px;
+	margin-top:10px;
 }
 
 .post-category::after,
@@ -334,9 +345,10 @@ img {
  * 5.0 - Widget
  */
 
-.widget {
+/*.widget {
     padding: 5px 0 0;
 }
+*/
 
 .widget-title {
     font-size: 1.5em;
@@ -370,9 +382,8 @@ img {
 }
 
 .widget-archives ul {
-    padding: 0;
     margin: 0;
-    padding-left: 40px;
+    padding-left: 12px;
 }
 
 .widget-archives ul li {
@@ -382,7 +393,7 @@ img {
     margin-bottom: 10px;
 }
 
-.widget-archives ul li::before {
+/*.widget-archives ul li::before {
     content: '\f3f3';
     font-family: "Ionicons";
     position: absolute;
@@ -391,11 +402,13 @@ img {
     font-size: 16px;
     color: #000;
 }
+*/
 
 .widget-category ul {
+	list-style:none;
     padding: 0;
     margin: 0;
-    padding-left: 40px;
+    padding-left: 12px;
 }
 
 .widget-category ul li {
@@ -405,7 +418,8 @@ img {
     margin-bottom: 10px;
 }
 
-.widget-category ul li::before {
+
+/*.widget-category ul li::before {
     content: '\f3fe';
     font-family: "Ionicons";
     position: absolute;
@@ -414,7 +428,7 @@ img {
     font-size: 18px;
     color: #000;
 }
-
+*/
 .widget-tag-cloud ul {
     padding: 0;
     margin: 0;
@@ -472,7 +486,7 @@ img {
 #header-search-box {
     position: absolute;
     right: 38px;
-    top: 8px;
+    top: 14px;
 }
 
 .search-form {
@@ -689,7 +703,7 @@ img {
 }
 
 .contact-form textarea, .comment-form textarea {
-    border: 1px solid #aaa;
+    border: 2px solid #963080;
     margin-bottom: 15px;
     width: 100%;
     font-size: 16px;

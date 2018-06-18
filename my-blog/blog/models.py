@@ -1,5 +1,4 @@
 from django.db import models
-import logging
 from django.contrib.auth.models import User
 from django.utils.html import strip_tags
 #创建应用的模型 
@@ -44,7 +43,6 @@ class Post(models.Model):
 	def increase_views(self):
 		self.views+=1
 		self.save(update_fields = ['views'])
-		logging.debug("hello")
 	def get_absolute_url(self):
 		return reverse('blog:detail',kwargs={'pk':self.pk})
 

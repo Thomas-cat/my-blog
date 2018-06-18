@@ -1,3 +1,4 @@
+
 .content-body{
 
 margin-top:10px;
@@ -7,14 +8,14 @@ background-color:#6999c7
 }
 #site-header{
 position:relative;
-top:44px;
+top:40px;
 }
 
 .top_h{
     padding: 0 10px;
     line-height: 40px;
     height: 40px;
-    background: #337ab7c7;
+    background: #337ab799;
     color: white;
     border-bottom: 1px solid #e5e5e5;
     font-size: 18px;	
@@ -34,7 +35,7 @@ background:white;
 }
 .post-ul{
 margin:0 ;
-padding:10px;
+padding-left:10px;
 overflow:hidden;
 
 }
@@ -64,6 +65,7 @@ background:#699dca;
 	}
 
 .header--image{
+    background-position: 50%;
     background-repeat: no-repeat;
     background-size: cover;
     color: #fff;
@@ -83,20 +85,25 @@ background:#699dca;
 
 }
 .excerpt-a{
-	font-size:20px;
-	color:#675e5e;
+	font-size:23px;
+ 	color:#5f5b5b;
+    margin-left: 0;
+
+}
+.post-ul h3{
+
+margin-bottom:25px
 
 }
 
 .top-bar{
 
     border-bottom: 1px solid #e1e1e1;
-	overflow:hidden;
 	padding: 0.5rem;
 	position:fixed;
 	left:0;
 	top:0;
-	z-index:999;
+	z-index:99999;
 	width:100%;
 	background:white;
 
@@ -128,12 +135,18 @@ background:#699dca;
 }
 .container{
 
+overflow:hidden ;
 padding-left:4px;
 padding-right:4px;
 position:relative;
-top:32px;
+top:24px;
 }
-html, body{ width: 100%; margin: 0; padding: 0; }
+html, body{
+width: 100%;
+margin: 0;
+padding: 0;
+}
+
 
 
 
@@ -243,4 +256,34 @@ pre{
 
 background-color:#bdb9b9;
 
+}
+
+
+
+
+[class*=" icon-"], [class^=icon-] {
+    font-family: iconfont!important;
+    speak: none;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+
+.icon-calendar:before {
+    content: "\E667";
+}
+.icon-inner, svg {
+    height: 100%;
+    width: 100%;
+    height: 1.23em;
+}
+.post-date {
+    color: #999;
+    font-size: 20px;
 }
