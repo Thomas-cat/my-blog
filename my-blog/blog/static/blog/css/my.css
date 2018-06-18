@@ -74,7 +74,7 @@ background:#699dca;
     overflow: hidden;
     padding: 90px 0;
     text-align: center;
-    text-shadow: 2px 1px 0 #666, 3px 2px 0 #000;
+    text-shadow: 1px 1px 0 #000;
 
 
 }
@@ -287,3 +287,4 @@ background-color:#bdb9b9;
     color: #999;
     font-size: 20px;
 }
+
