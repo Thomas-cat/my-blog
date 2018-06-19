@@ -19,14 +19,11 @@ def recharge(requests):
 	q = requests.GET.get('q')
 	msg = '输入充值链接'
 	if q!= None:
-		if q.find('bid')!= -1:
-			ret = recharge_ccckk8(q)
-			if ret!=0:
-				msg = '充值故障,请用你的想象力撸管吧'
-			else:
-				msg = '充值成功,切记强撸灰飞烟灭'
+		ret = recharge_ccckk8(q)
+		if ret!=0:
+			msg = '充值故障,请用你的想象力撸管吧'
 		else:
-			msg = '链接有错误,请重新输入正确的链接'
+			msg = '充值成功,切记强撸灰飞烟灭'
 	return render(requests,'blog/recharge.html',context = {'msg':msg})
 
 def search(request):
@@ -53,6 +50,13 @@ class IndexView(ListView):
 		is_paginated = context.get('is_paginated')
 		pagination_data = self.pagination_data(paginator,page,is_paginated)
 		context.update(pagination_data)
+
+		request = self.request
+		if request.META.get('HTTP_X_FORWARDED_FOR'):  
+			ip =  request.META['HTTP_X_FORWARDED_FOR']  
+		else:  
+			ip = request.META['REMOTE_ADDR']  
+		context['ip'] = ip
 		return context
 	def pagination_data(self,paginator,page,is_paginated):
 		if not is_paginated:
@@ -67,12 +71,9 @@ class IndexView(ListView):
 		page_range = paginator.page_range
 		first_index = (page_index-2)if(page_index-2>1) else 1
 		last_index = (page_index+2)if(page_index+2<total_pages) else total_pages
-		logging.debug(first_index)
-		logging.debug(last_index)
 
 		page_index = list(page_range[first_index-1:last_index])
 
-		logging.debug(page_index)
 
 		if (page_index[0]>1):
 			page_index.insert(0,'...')
