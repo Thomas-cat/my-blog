@@ -2,12 +2,6 @@
 {% block main %}
 <script type="text/javascript">
 document.getElementById("site-header").style.display="none";
-
-$(function() {
-    $('.like-group').on('click', function() {
-      $(this).toggleClass("like-animation");
-	  {{post.increase_views}}
-    })
   })
 
 
