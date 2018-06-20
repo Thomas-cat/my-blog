@@ -91,10 +91,6 @@ class PostDetailView(DetailView):
 	model = Post
 	template_name = 'blog/detail.html'
 	context_object_name = 'post'
-	def get(self,request,*args,**kwargs):
-		respon = super(PostDetailView,self).get(request,*args,**kwargs)
-		self.object.increase_views()
-		return respon
 	def get_context_data(self,*args,**kwargs):
 		context = super(PostDetailView,self).get_context_data(*args,**kwargs)
 		form = CommentForm()
