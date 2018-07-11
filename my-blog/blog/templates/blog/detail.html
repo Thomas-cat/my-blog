@@ -25,14 +25,7 @@ document.getElementById("site-header").style.display="none";
 	<hr style="border-top: 2px solid #ddd;">
     </article>
 
-<div data-v-6ddd02c6="" class="like" style="display:none"> <div data-v-6ddd02c6="" class="btn like-group"><div data-v-6ddd02c6="" class="btn-like"><a data-v-6ddd02c6="">喜欢</a></div> <div data-v-6ddd02c6="" class="modal-wrap"><a data-v-6ddd02c6="">97</a></div></div> <!----></div>
-
-
-
-
-
-
-
+<div data-v-6ddd02c6="" class="like" style="display:none"> <div data-v-6ddd02c6="" class="btn like-group"><div data-v-6ddd02c6="" class="btn-like"><a data-v-6ddd02c6="">喜欢</a></div> <div data-v-6ddd02c6="" class="modal-wrap"><a data-v-6ddd02c6="">97</a></div></div> </div>
 
 
     {% ifnotequal comment_list.count 0 %}
@@ -40,8 +33,8 @@ document.getElementById("site-header").style.display="none";
             <h3>评论列表，共 <span>{{comment_list.count}}</span> 条评论</h3>
 	   <ul class="comment-list list-unstyled">
   {% for comment in comment_list %}
-  <li class="comment-item">
-    <span class="nickname">{{ comment.name }}</span>
+  <li  class="comment-item">
+  <span> {{comment.pk}}楼</span>
     <time class="submit-date">{{ comment.created_time }}</time>
     <div class="text">
       {{ comment.text }}
@@ -51,6 +44,7 @@ document.getElementById("site-header").style.display="none";
 </ul>
         </div>
   {%endifnotequal%}
+
 
     <section class="comment-area" id="comment-area">
         <hr>
