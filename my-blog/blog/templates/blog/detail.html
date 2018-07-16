@@ -1,7 +1,10 @@
 {% extends 'base.html' %}
+{%load staticfiles%}
+
 {% block main %}
 <script type="text/javascript">
-document.getElementById("site-header").style.display="none";
+　　var s = "{%static 'blog/img/detail.jpg' %}";
+　　$("div.header--image").css("background-image","url("+s+")");
 </script>
 
     <article class="post post-{{ post.pk }}">
@@ -59,4 +62,5 @@ document.getElementById("site-header").style.display="none";
     </section>
 	<div style="height:20px;">
 	</div>
+
 {% endblock main %}
