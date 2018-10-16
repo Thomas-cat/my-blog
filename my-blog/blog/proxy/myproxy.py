@@ -48,7 +48,7 @@ def get_table(url):
 	check_vaild(proxies)
 def auto_get():
 	ths = []
-	for i in range(1,10):
+	for i in range(1,5):
 		th_1 = Thread(target = get_table,args = (url_1+str(i),))
 		th_2 = Thread(target = get_table,args = (url_2+str(i),))
 		th_3 = Thread(target = get_table,args = (url_3+str(i),))
