@@ -7,7 +7,19 @@ from comments.forms import CommentForm
 from django.views.generic import ListView,DetailView
 from django.core.paginator import Paginator
 from .proxy.ccckk8 import recharge_ccckk8
+import json
+import time
 
+def time_tool(requests):
+	t = requests.GET.get('t')
+	if t!=None:
+		a = time.localtime(int(t))
+		time_string = "%s-%s-%s  %s:%s"%(a.tm_year,a.tm_mon,a.tm_mday,a.tm_hour,a.tm_min)
+		time_string = {'time_string':time_string}
+	else:
+		time_string = {'time_string':'none'}
+	return HttpResponse(json.dumps(time_string),content_type="application/json")
+		
 class TagView(ListView):
 	model = 'Post'
 	template_name = 'blog/index.html'

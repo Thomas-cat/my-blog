@@ -10,5 +10,6 @@ urlpatterns = [
 	path('category/<int:pk>',views.CategoryView.as_view(),name = 'category'),
 	path('tag/<int:pk>',views.TagView.as_view(),name = 'tag'),
 	path('recharge',views.recharge,name = 'recharge'),
+	path('time_tool',views.time_tool,name = 'time_tool'),
 #	path('search/',views.search,name = 'search'),
 ]
