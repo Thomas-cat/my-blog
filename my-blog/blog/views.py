@@ -6,9 +6,33 @@ from .models import Post,Category,Tag
 from comments.forms import CommentForm
 from django.views.generic import ListView,DetailView
 from django.core.paginator import Paginator
+from .ccckk.ck import *
 from .proxy.ccckk8 import recharge_ccckk8
 import json
 import time
+
+
+#以下为接口ccckk
+##获取首页目录数据
+def ccckk_homePage(requests):
+	cate = int(requests.GET.get('cate'))
+	ty = requests.GET.get('type')
+	page = int(requests.GET.get('page'))
+	data = get_category(cate,ty,page)
+	return HttpResponse(json.dumps(data),content_type="application/json")
+##获取内容详情数据
+def ccckk_detailPage(requests):
+	cate = int(requests.GET.get('cate'))
+	url = requests.GET.get('url')
+	if cate == 2:
+		ret = get_novel(url)
+		data = {'text':ret}
+	elif cate == 1:
+		ret = get_picture(url)
+		data = {'pictureLins':ret}
+	return HttpResponse(json.dumps(data),content_type="application/json")
+
+#ccckk接口到此为止
 
 def time_tool(requests):
 	t = requests.GET.get('t')

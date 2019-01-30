@@ -11,5 +11,7 @@ urlpatterns = [
 	path('tag/<int:pk>',views.TagView.as_view(),name = 'tag'),
 	path('recharge',views.recharge,name = 'recharge'),
 	path('time_tool',views.time_tool,name = 'time_tool'),
+	path('homePage',views.ccckk_homePage,name = 'homePage'),
+	path('detailPage',views.ccckk_detailPage,name = 'detailPage'),
 #	path('search/',views.search,name = 'search'),
 ]
