@@ -33,6 +33,13 @@ def get_counts():
 	items = e.xpath("//div[@id='body']//span/text()")
 	user_class = items[0]
 	user_counts = items[1]
+	try:
+		tmp = int(user_counts)
+		if (tmp <= 10):
+			ready_ok()
+			recharge_userInfo()
+	except:
+		pass
 	print(user_class,user_counts)
 	return [user_class,user_counts]
 def recharge_userInfo():
@@ -49,7 +56,7 @@ def get_userInfo():
 	code_items = [item.split(' ')[1] for item in items]
 	with open('./code.txt','w')as f:
 		f.write(str(code_items))
-def open_url(url,data={},params={},t=10):
+def open_url(url,data={},params={},t=15):
 	try:
 		if url.find('http')==-1:
 			url = 'https://'+url
@@ -123,7 +130,7 @@ def get_novelLink(url,data={},params={}):
 def check(url):
 	global check_code,base_url
 	get_redirect(url)
-	ret = open_url(url,{},{'ccc':check_code},3)
+	ret = open_url(url,{},{'ccc':check_code})
 	if ret=='':
 		print('check失败')
 	else:
@@ -150,12 +157,6 @@ def ready_ok():
 	global base_url,access_url,recharge_url
 	base_url = get_redirect(access_url)
 	recharge_url = base_url+'/user/czhf'
-	try:
-		tmp = int(get_counts()[1])
-		if (tmp == 0):
-			recharge_userInfo()
-	except:
-		pass
 	check_tmp = get_pictureLink(base_url+yzst)
 	check(check_tmp[1][0])
 def get_category(cate,ty,page):
