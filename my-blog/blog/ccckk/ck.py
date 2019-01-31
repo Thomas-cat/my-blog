@@ -79,11 +79,12 @@ def get_pictureLink(url,data={},params={}):
 		print(params)
 		e= open_url(url,data,params)
 		title = e.xpath("//div[@id='body']//div//img/@alt")
+		cover = e.xpath("//div[@id='body']//div//img/@src")
 		href = e.xpath("//div[@id='body']//div//a/@href")
 		href = [base_url+x for x in href]
 	except: 
 		print("获取图片链接出错")
-	return [title,href]
+	return [title,href,cover]
 def get_novelLink(url,data={},params={}):
 	global base_url
 	title = []
@@ -110,7 +111,11 @@ def get_novel(url):
 	check(url)
 	e = open_url(url)
 	text = e.xpath("//div[@id='body']/div[1]/text()")
-	return text
+	print(text)
+	tmp =''
+	for item in text:
+		tmp+=item
+	return	tmp 
 
 def get_picture(url):
 	global base_url
