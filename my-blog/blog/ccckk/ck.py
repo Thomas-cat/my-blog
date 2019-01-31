@@ -80,6 +80,7 @@ def get_pictureLink(url,data={},params={}):
 		e= open_url(url,data,params)
 		title = e.xpath("//div[@id='body']//div//img/@alt")
 		cover = e.xpath("//div[@id='body']//div//img/@src")
+		cover = [base_url+x for x in cover]
 		href = e.xpath("//div[@id='body']//div//a/@href")
 		href = [base_url+x for x in href]
 	except: 
