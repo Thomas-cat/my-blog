@@ -9,11 +9,15 @@ urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 
 yzst = '/picture/list/亚洲色图#header'
 omst = '/picture/list/欧美色图#header'
-byph = '/picture/list/monthly-ranking#header'
+pbyph = '/picture/monthly-ranking#header'
 
 jtll = '/story/list/家庭乱伦#header'
 llxs = '/story/list/另类小说#header'
 xycs = '/story/list/校园春色#header'
+
+bzph = "/video/weekly-ranking#header"
+byph = "/video/monthly-ranking#header"
+zjgx = "/video/newest#header"
 
 access_url = 'https://ccckk8.com/picture/detail/17301'
 check_code = ''
@@ -72,10 +76,28 @@ def get_redirect(url):
 	except:
 		ret = ''
 	return ret
+
+def get_videoLink(url,data={},params={}):
+	global base_url
+	title = []
+	href = []
+	cover=[]
+	try:
+		e= open_url(url,data,params)
+		title = e.xpath("//div[@id='body']//div//img/@alt")
+		cover = e.xpath("//div[@id='body']//div//img/@src")
+		cover = [base_url+x for x in cover]
+		href = e.xpath("//div[@id='body']//div//a/@href")
+		href = [base_url+x for x in href]
+	except: 
+		print("获取视频链接出错")
+	return [title,href,cover]
+
 def get_pictureLink(url,data={},params={}):
 	global base_url
 	title = []
 	href = []
+	cover = []
 	try:
 		e= open_url(url,data,params)
 		title = e.xpath("//div[@id='body']//div//img/@alt")
@@ -128,6 +150,7 @@ def get_picture(url):
 def ready_ok():
 	global base_url,access_url,recharge_url
 	base_url = get_redirect(access_url)
+	print(base_url)
 	recharge_url = base_url+'/user/czhf'
 	check_tmp = get_pictureLink(base_url+yzst)
 	check(check_tmp[1][0])
@@ -140,4 +163,6 @@ def get_category(cate,ty,page):
 		ret = get_pictureLink(base_url+s,{},params)
 	elif cate==2:
 		ret = get_novelLink(base_url+s,{},params)
+	else:
+		ret = get_videoLink(base_url+s,{},params)
 	return ret

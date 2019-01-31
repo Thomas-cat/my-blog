@@ -14,6 +14,9 @@ import time
 
 #以下为接口ccckk
 ##获取首页目录数据
+def ccckk_userInfo(requests):
+	data = get_counts()
+	return HttpResponse(json.dumps(data),content_type="application/json")
 def ccckk_homePage(requests):
 	cate = int(requests.GET.get('cate'))
 	ty = requests.GET.get('type')
