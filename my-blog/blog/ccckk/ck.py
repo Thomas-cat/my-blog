@@ -22,7 +22,7 @@ req = requests.session()
 #网址入口以及代理
 ua = {'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_2) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.98 Safari/537.36'}
 user_url = 'https://ccckk8.com/user/profile#header'
-recharge_url = 'https://1iippp.bid/user/czhf'
+recharge_url = ''
 
 def get_counts():
 	e = open_url(user_url)
@@ -30,12 +30,15 @@ def get_counts():
 	user_class = items[0]
 	user_counts = items[1]
 	print(user_class,user_counts)
+	return [user_class,user_counts]
 def recharge_userInfo():
+	global recharge_url
+	ready_ok()
 	with open('./code.txt','r')as f:
 		data = f.read()
 	data = eval(data)
-	data = {'c1':data[0],'c2':data[1]}
-	open_url(recharge_url,data=data)
+	data = {'c1':data[1],'c2':data[0]}
+	req.post(recharge_url,headers=ua,verify=False,timeout=5,data=data)
 	print(data)
 def get_userInfo():
 	e = open_url(user_url)
@@ -74,9 +77,6 @@ def get_pictureLink(url,data={},params={}):
 	title = []
 	href = []
 	try:
-		print(url)
-		print(data)
-		print(params)
 		e= open_url(url,data,params)
 		title = e.xpath("//div[@id='body']//div//img/@alt")
 		cover = e.xpath("//div[@id='body']//div//img/@src")
@@ -126,8 +126,9 @@ def get_picture(url):
 	pics = [base_url+pic for pic in pics]
 	return pics
 def ready_ok():
-	global base_url,access_url
+	global base_url,access_url,recharge_url
 	base_url = get_redirect(access_url)
+	recharge_url = base_url+'/user/czhf'
 	check_tmp = get_pictureLink(base_url+yzst)
 	check(check_tmp[1][0])
 def get_category(cate,ty,page):
