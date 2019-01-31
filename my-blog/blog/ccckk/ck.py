@@ -37,8 +37,6 @@ def get_counts():
 	return [user_class,user_counts]
 def recharge_userInfo():
 	global recharge_url
-	ready_ok()
-	print(recharge_url)
 	with open('./code.txt','r')as f:
 		data = f.read()
 	data = eval(data)
@@ -152,6 +150,12 @@ def ready_ok():
 	global base_url,access_url,recharge_url
 	base_url = get_redirect(access_url)
 	recharge_url = base_url+'/user/czhf'
+	try:
+		tmp = int(get_counts()[1])
+		if (tmp == 0):
+			recharge_userInfo()
+	except:
+		pass
 	check_tmp = get_pictureLink(base_url+yzst)
 	check(check_tmp[1][0])
 def get_category(cate,ty,page):
