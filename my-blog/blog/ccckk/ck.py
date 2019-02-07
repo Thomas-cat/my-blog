@@ -168,4 +168,3 @@ def get_category(cate,ty,page):
 	else:
 		ret = get_videoLink(base_url+s,{},params)
 	return ret
-get_counts()
