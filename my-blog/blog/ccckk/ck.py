@@ -34,10 +34,8 @@ def get_counts():
 	user_class = items[0]
 	user_counts = items[1]
 	try:
-		tmp = int(user_counts)
-		if (tmp <= 10):
-			ready_ok()
-			recharge_userInfo()
+		ready_ok()
+		recharge_userInfo()
 	except:
 		pass
 	print(user_class,user_counts)
@@ -170,3 +168,4 @@ def get_category(cate,ty,page):
 	else:
 		ret = get_videoLink(base_url+s,{},params)
 	return ret
+get_counts()
