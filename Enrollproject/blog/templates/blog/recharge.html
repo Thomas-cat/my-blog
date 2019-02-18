@@ -1,0 +1,15 @@
+<html>
+<body>
+
+<form action="{% url 'blog:recharge'%}" method="get">
+  <p>链接: <input type="text" name="q" size="100" required></p>
+  <input type="submit" value="提交" style="height:20px;width:100px;background-color:	#FAFAD2"/>
+</form>
+
+
+{% if msg %}
+{{msg}}
+{%endif%}
+</body>
+</html>
+

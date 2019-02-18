@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+{% load highlight %}
+
+{% block main %}
+    {% if query %}
+		<div style=''>
+                         <h2 class="top_h">
+                          {%if category %}{{category.category_name}}{%else%} 搜索到的文章 {%endif%}
+                            </h2>
+<ul class="post-ul">
+
+	    {%	for post in page.object_list %}
+<li style='border-bottom: #ccc 1px solid;  margin-bottom: 10px;overflow: hidden; list-style:none;'>
+   <h3 style="    line-height: 30px;
+    height: 30px;">
+                        <a  class="excerpt-a" href="{{ post.object.get_absolute_url }}">{% highlight post.object.title with query %}</a>
+								</h3>
+
+                <div class="entry-content clearfix">
+                    <p class="excerpt=p">{% highlight post.object.body with query %}</p>
+                </div>
+           <span class="post-date" style="padding-right:10px;"><a href="#"><time class="entry-date" datetime="{{ post.object.created_time }}">{{ post.object.created_time }}</time></a></span>
+                                <span class="views-count"><a href="#"> {{ post.object.views}} 浏览</a></span>
+				</li>
+        {% empty %}
+            <div class="no-post">没有搜索到你想要的结果！</div>
+        {% endfor %}
+
+{% if page.has_previous or page.has_next %}
+            <div>
+                {% if page.has_previous %}
+                    <a href="?q={{ query }}&amp;page={{ page.previous_page_number }}">
+					&laquo; Previous
+                </a>{% endif %}
+                {% if page.has_next %}
+				<a href="?q={{ query }}&amp;page={{ page.next_page_number }}">Next
+                &raquo;
+				</a>{% endif %}
+            </div>
+{%endif%}
+
+    {% else %}
+        请输入搜索关键词，例如 django
+    {% endif %}
+{% endblock main %}
