@@ -12,6 +12,10 @@ urlpatterns = [
 	path('recharge',views.recharge,name = 'recharge'),
 	path('time_tool',views.time_tool,name = 'time_tool'),
 	path('homePage',views.ccckk_homePage,name = 'homePage'),
+	path('userInfo',views.ccckk_userInfo,name = 'userInfo'),
 	path('detailPage',views.ccckk_detailPage,name = 'detailPage'),
+	path('lottery_update',views.lottery_update),
+	path('lottery_clear',views.lottery_clear),
+	path('lottery_get',views.lottery_get),
 #	path('search/',views.search,name = 'search'),
 ]

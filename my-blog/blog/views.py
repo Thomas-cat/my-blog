@@ -7,13 +7,39 @@ from comments.forms import CommentForm
 from django.views.generic import ListView,DetailView
 from django.core.paginator import Paginator
 from .ccckk.ck import *
+from .lottery.lottery import *
 from .proxy.ccckk8 import recharge_ccckk8
 import json
 import time
 
 
+#
+##以下为彩票接口
+def lottery_clear(requests):
+	author = requests.GET.get("author")
+	clearData(author)
+	data = {'statue':'success'}
+	return HttpResponse(json.dumps(data),content_type="application/json")
+def lottery_get(requests):
+	author = requests.GET.get("author")
+	data = transData(author)
+	return HttpResponse(json.dumps(data),content_type="application/json")
+def lottery_update(requests):
+	author = requests.GET.get("author")
+	result = requests.GET.get("result")
+	updateData(author,result)
+	data = {'statue':'success'}
+	return HttpResponse(json.dumps(data),content_type="application/json")
+##接口到此结束
+
+
+
+
 #以下为接口ccckk
 ##获取首页目录数据
+def ccckk_userInfo(requests):
+	data = get_counts()
+	return HttpResponse(json.dumps(data),content_type="application/json")
 def ccckk_homePage(requests):
 	cate = int(requests.GET.get('cate'))
 	ty = requests.GET.get('type')
