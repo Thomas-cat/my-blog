@@ -29,7 +29,7 @@ def transData(author):
 			lost_items.append(index)
 	for i in range(len(win_items)):
 		try:
-			tmp = win_items[i+1]-win_items[i]
+			tmp = win_items[i+1]-win_items[i]-1
 			if tmp>max_lost:
 				max_lost = tmp
 		except:
@@ -55,7 +55,7 @@ def transData(author):
 			pass
 	for i in range(len(lost_items)):
 		try:
-			tmp = lost_items[i+1]-lost_items[i]
+			tmp = lost_items[i+1]-lost_items[i]-1
 			if tmp>max_win:
 				max_win = tmp
 		except:
